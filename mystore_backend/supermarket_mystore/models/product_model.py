@@ -2,7 +2,6 @@ from django.db import models
 from .category_model import Category
 
 class Product(models.Model):
-
     id = models.AutoField(primary_key = True)
     name = models.CharField(max_length = 20)
     description = models.CharField(max_length = 140)
@@ -11,4 +10,4 @@ class Product(models.Model):
     quantity = models.IntegerField()
 
     class Meta:
-        app_label = 'supermarket_ms'
+        app_label = 'supermarket_mystore'

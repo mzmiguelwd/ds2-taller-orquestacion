@@ -1,5 +1,5 @@
-from supermarket_ms.models.category_model import Category
-from supermarket_ms.serializers.category_serializer import CategorySerializer
+from supermarket_mystore.models.category_model import Category
+from supermarket_mystore.serializers.category_serializer import CategorySerializer
 from rest_framework import mixins
 from rest_framework import generics
 

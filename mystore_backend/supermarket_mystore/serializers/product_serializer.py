@@ -1,10 +1,9 @@
 from rest_framework import serializers
-from supermarket_ms.models.product_model import Product
-from supermarket_ms.models.category_model import Category
-from supermarket_ms.serializers.category_serializer import CategorySerializer
+from supermarket_mystore.models.product_model import Product
+from supermarket_mystore.models.category_model import Category
+from supermarket_mystore.serializers.category_serializer import CategorySerializer
 
 class ProductSerializer(serializers.ModelSerializer):
-
     unit_measurement = serializers.ChoiceField(choices={"Units":"UN", "Liters":"LI", "Grams":"GR",})
 
     class Meta:
@@ -12,7 +11,6 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'description', 'category', 'unit_measurement', 'quantity']
 
     def create(self, validated_data):
-
         um_long_to_short={"Units":"UN", "Liters":"LI", "Grams":"GR",}
 
         product = Product(name = validated_data.get("name"),
@@ -20,11 +18,11 @@ class ProductSerializer(serializers.ModelSerializer):
                           quantity = validated_data.get("quantity"),
                           unit_measurement = um_long_to_short[validated_data.get("unit_measurement")],
                           category = validated_data.get("category"))
+        
         product.save()
         return product
 
     def update(self, instance, validated_data):
-
         um_long_to_short={"Units":"UN", "Liters":"LI", "Grams":"GR",}
 
         instance.name = validated_data.get("name")
@@ -36,7 +34,6 @@ class ProductSerializer(serializers.ModelSerializer):
         return instance
 
     def to_representation(self, obj):
-
         data = super().to_representation(obj)
 
         um_short_to_long={"UN":"Units", "LI":"Liters", "GR":"Grams",}
@@ -46,5 +43,4 @@ class ProductSerializer(serializers.ModelSerializer):
 
         data["category"] = categorySerializer.data
         data["unit_measurement"] = um_short_to_long[data["unit_measurement"]]
-
         return data

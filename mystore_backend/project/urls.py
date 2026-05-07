@@ -1,6 +1,5 @@
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('supermarket_ms.urls')),
+    path('', include('supermarket_mystore.urls')),
 ]
-

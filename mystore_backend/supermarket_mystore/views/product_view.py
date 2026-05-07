@@ -1,8 +1,5 @@
-from supermarket_ms.models.product_model import Product
-from supermarket_ms.serializers.product_serializer import ProductSerializer
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
+from supermarket_mystore.models.product_model import Product
+from supermarket_mystore.serializers.product_serializer import ProductSerializer
 from rest_framework import mixins
 from rest_framework import generics
 
