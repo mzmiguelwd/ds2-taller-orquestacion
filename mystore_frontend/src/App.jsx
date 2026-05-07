@@ -12,6 +12,10 @@ export const App = () => {
         <Tab eventKey="categories" title="Categorías">
           <Categories />
         </Tab>
+        
+        <Tab eventKey="products" title="Productos">
+          <Products />
+        </Tab>
       </Tabs>
     </Container>
   );
